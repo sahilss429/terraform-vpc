@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        sh "docker run -i -t hashicorp/terraform:light init -input=false"
+        sh "docker run -i -t hashicorp/terraform:light init"
       }
     }
     stage('Terraform Plan') {
