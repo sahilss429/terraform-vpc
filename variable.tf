@@ -8,7 +8,7 @@ variable "mapPublicIPPrivateSubnet" {
   default = "false"
 }
 variable "availability_zonePrivateSubnet" {
-  default = "a"
+  default = "us-east-1a"
 }
 variable "public_subnetCIDR" {
   default = "172.15.2.0/24"
@@ -17,7 +17,7 @@ variable "mapPublicIPPublicSubnet" {
   default = "true"
 }
 variable "availability_zonePublicSubnet" {
-  default = "b"
+  default = "us-east-1b"
 }
 variable "destcidrblock" {
   default = "0.0.0.0/0"
