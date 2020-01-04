@@ -13,18 +13,18 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        sh "/usr/local/bin/terraform init -input=false"
+        sh "sudo /usr/local/bin/terraform init -input=false"
       }
     }
     stage('Terraform Plan') {
       steps {
-        sh "/usr/local/bin/terraform plan -input=false"
+        sh "sudo /usr/local/bin/terraform plan -input=false"
       }
     }
     stage('Terraform Apply') {
       steps {
         input 'Apply Plan'
-        sh "/usr/local/bin/terraform apply -input=false"
+        sh "sudo /usr/local/bin/terraform apply -input=false"
       }
     }
   }
