@@ -13,18 +13,18 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        sh "docker run -i -t hashicorp/terraform:light init"
+        sh "/usr/local/bin/terraform init -input=false"
       }
     }
     stage('Terraform Plan') {
       steps {
-        sh "docker run -i -t hashicorp/terraform:light plan -out=tfplan -input=false -var-file='dev.tfvars'"
+        sh "/usr/local/bin/terraform plan -input=false"
       }
     }
     stage('Terraform Apply') {
       steps {
         input 'Apply Plan'
-        sh "docker run -i -t hashicorp/terraform:light apply -input=false tfplan"
+        sh "/usr/local/bin/terraform apply -input=false"
       }
     }
   }
