@@ -4,7 +4,7 @@ resource "aws_vpc" "VPC-Test02" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags {
+  tags = {
     Name = "VPC-Test02"
   }
 }
@@ -15,7 +15,7 @@ resource "aws_subnet" "private_subnet" {
   map_public_ip_on_launch = "${var.mapPublicIPPrivateSubnet}"
   availability_zone = "${var.availability_zonePrivateSubnet}"
 tags = {
-  Name = "Private-subnet${count.index}"
+  Name = "Private-subnet"
 }
 }
 
@@ -25,7 +25,7 @@ resource "aws_subnet" "public_subnet" {
   map_public_ip_on_launch = "${var.mapPublicIPPublicSubnet}"
   availability_zone = "${var.availability_zonePublicSubnet}"
 tags = {
-  Name = "Public-subnet${count.index}"
+  Name = "Public-subnet"
 }
 }
 #create security groups
@@ -38,7 +38,7 @@ resource "aws_security_group" "VPC-Test02-sg1" {
 #create internet gateway
 resource "aws_internet_gateway" "VPC-Test02-IGW" {
     vpc_id = "${aws_vpc.VPC-Test02.id}"
-    tags {
+    tags = {
       name = "VPC-Test02-IGW"
     }
 }
@@ -50,20 +50,19 @@ resource "aws_eip" "nat" {
 resource "aws_nat_gateway" "VPC-Test02-natgateway" {
   allocation_id = "${aws_eip.nat.id}"
   subnet_id = "${aws_subnet.private_subnet.id}"
-  depends_on = "${aws_internet_gateway.VPC-Test02-IGW}"
 }
 
 #create route tables
 resource "aws_route_table" "VPC-Test02-privateRT" {
   vpc_id = "${aws_vpc.VPC-Test02.id}"
-  tags {
+  tags = {
     Name = "VPC-Test02-privateRT"
   }
 }
 
 resource "aws_route_table" "VPC-Test02-publicRT" {
   vpc_id = "${aws_vpc.VPC-Test02.id}"
-  tags {
+  tags = {
     Name = "VPC-Test02-publicRT"
   }
 }
