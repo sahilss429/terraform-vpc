@@ -26,15 +26,5 @@ pipeline {
         sh "docker run -i -t hashicorp/terraform:light apply -input=false tfplan"
       }
     }
-    stage('AWSpec Tests') {
-      steps {
-          sh '''#!/bin/bash -l
-bundle install --path ~/.gem
-bundle exec rake spec || true
-'''
-
-        junit(allowEmptyResults: true, testResults: '**/testResults/*.xml')
-      }
-    }
   }
 }
