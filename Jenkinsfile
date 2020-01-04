@@ -22,9 +22,11 @@ pipeline {
       }
     }
     stage('Promotion') {
+      steps {
         timeout(time: 1, unit: 'MINUTE') {
           input 'Apply Plan'
         }
+      }
     }
     stage('Terraform Apply') {
       steps {
