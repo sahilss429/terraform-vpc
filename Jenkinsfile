@@ -11,21 +11,6 @@ pipeline {
     AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
   }
   stages {
-    stage('Terraform Init') {
-      steps {
-        sh "sudo /usr/local/bin/terraform init -input=false"
-      }
-    }
-    stage('Terraform Plan') {
-      steps {
-        sh "sudo /usr/local/bin/terraform plan -out=tfplan -input=false"
-      }
-    }
-    stage('Terraform Apply') {
-      steps {
-        sh "sudo /usr/local/bin/terraform apply -input=false tfplan"
-      }
-    }
     stage('Terraform Destroy') {
       steps {
         sh "sudo /usr/local/bin/terraform destroy -input=false"
