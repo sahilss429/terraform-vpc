@@ -21,13 +21,6 @@ pipeline {
         sh "sudo /usr/local/bin/terraform plan -out=tfplan -input=false"
       }
     }
-    stage('Promotion') {
-      steps {
-        timeout(time: 1, unit: 'MINUTES') {
-          input 'Apply Plan'
-        }
-      }
-    }
     stage('Terraform Apply') {
       steps {
         sh "sudo /usr/local/bin/terraform apply -input=false tfplan"
