@@ -26,5 +26,10 @@ pipeline {
         sh "sudo /usr/local/bin/terraform apply -input=false tfplan"
       }
     }
+    stage('Terraform Destroy') {
+      steps {
+        sh "sudo /usr/local/bin/terraform destroy -input=false"
+      }
+    }
   }
 }
