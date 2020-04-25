@@ -2,10 +2,13 @@ pipeline {
   agent any
   stages {
      stage('Checkout Code') {
+       steps {
           checkout scm
+       }
      }
      
      stage('Are we building?') {
+       steps {
           sh 'git log -1 --pretty=%B > git_message'
           if (!readFile('git_message').startsWith('[blacksmith]')) {
              stage('Setup Gitconfig') {
@@ -17,16 +20,25 @@ pipeline {
                 sh("git config user.email sahilss429@gmail.com")
                 sh("git config user.name 'sahilss429'")
              }
-             stage('Validate') {
-                sh '"bundle exec rake lint syntax"'
-             }
-             stage('Test') {
-                sh '"bundle exec rake spec"'
-             }
-             stage('Build') {
-                sh '"git checkout -b publish_tmp && git checkout -B master publish_tmp && bundle exec rake publish && git branch -d publish_tmp && git push --tags origin master"'
-             }
           }
+       }
      }
-   }
+     stage('Validate') {
+       steps {
+          sh '"bundle exec rake lint syntax"'
+       }
+     }
+
+     stage('Test') {
+       steps {
+          sh '"bundle exec rake spec"'
+       }
+     }
+
+     stage('Build') {
+       steps {
+          sh '"git checkout -b publish_tmp && git checkout -B master publish_tmp && bundle exec rake publish && git branch -d publish_tmp && git push --tags origin master"'
+       }
+     }
+  }
 }
