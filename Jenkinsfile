@@ -1,8 +1,3 @@
-properties([
-    buildDiscarder(logRotator(numToKeepStr: '5')), 
-    disableConcurrentBuilds()
-])
-
 pipeline {
         wrap([$class: 'AnsiColorBuildWrapper']) {
             stage('Checkout Code') {
