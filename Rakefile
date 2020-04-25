@@ -3,7 +3,7 @@ require 'puppet_blacksmith/rake_tasks'
 
 task default: ['test:default']
 
-task "bump" do
+task "tag" do
   require 'puppet_blacksmith/rake_tasks'
   Blacksmith::RakeTask.new do |t|
     t.tag_pattern = "v%s" # Use a custom pattern with git tag. %s is replaced with the version number.
@@ -16,7 +16,7 @@ task "publish" do
   require 'puppet_blacksmith/rake_tasks'
   Rake::Task["module:bump_commit"].invoke
   Rake::Task["module:tag"].invoke
-  Rake::Task["build"].invoke
+#  Rake::Task["build"].invoke
 #  Dir.glob("pkg/*.tar.gz") do |filename|
 #    modulename = File.basename(filename)
 #    puts "Publishing module #{modulename}"
