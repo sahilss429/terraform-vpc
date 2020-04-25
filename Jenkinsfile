@@ -1,11 +1,9 @@
-pipeline {
-
 properties([
     buildDiscarder(logRotator(numToKeepStr: '5')), 
     disableConcurrentBuilds()
 ])
 
-node('dood') {
+pipeline {
         wrap([$class: 'AnsiColorBuildWrapper']) {
             stage('Checkout Code') {
                 checkout scm
@@ -34,5 +32,4 @@ node('dood') {
                 }
             }
         }
-    }
 }
