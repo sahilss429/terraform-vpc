@@ -1,7 +1,10 @@
 pipeline {
+  agent any
+  stages {
      stage('Checkout Code') {
           checkout scm
      }
+     
      stage('Are we building?') {
           sh 'git log -1 --pretty=%B > git_message'
           if (!readFile('git_message').startsWith('[blacksmith]')) {
@@ -25,4 +28,5 @@ pipeline {
              }
           }
      }
+   }
 }
