@@ -1,7 +1,7 @@
 {
   "name": "terraform-cluster-management",
   "version": "0.0.4",
-  "author": "devops@paytm.com",
+  "author": "devops@ptm.com",
   "summary": "terraform modules",
   "license": "Apache-2.0",
   "source": "bitbucket",
