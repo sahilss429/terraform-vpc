@@ -1,0 +1,10 @@
+{
+  "name": "terraform-cluster-management",
+  "version": "0.0.3",
+  "author": "devops@paytm.com",
+  "summary": "terraform modules",
+  "license": "Apache-2.0",
+  "source": "bitbucket",
+  "project_page": "wiki",
+  "issues_url": "jira"
+}
