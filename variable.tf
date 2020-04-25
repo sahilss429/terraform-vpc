@@ -1,5 +1,5 @@
 variable "aws_ip_cidr_range" {
-  default = "172.15.0.0/16"
+  default = "172.15.0.0/8"
 }
 variable "private_subnetCIDR" {
   default = "172.15.1.0/24"
