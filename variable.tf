@@ -17,7 +17,7 @@ variable "mapPublicIPPublicSubnet" {
   default = "true"
 }
 variable "availability_zonePublicSubnet" {
-  default = "us-east-1b"
+  default = "us-east-1a"
 }
 variable "destcidrblock" {
   default = "0.0.0.0/0"
